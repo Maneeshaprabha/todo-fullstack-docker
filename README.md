@@ -37,7 +37,23 @@ A fullstack ToDo application that lets users manage tasks efficiently using a mo
 - Docker & Docker Compose installed  
   Download here: https://docs.docker.com/get-docker/
 
----
+
+
+
+- Java 17+
+- Maven
+- MySQL running on:
+  - Host: `localhost`
+  - Port: `3306`
+  - User: `root`
+  - Password: `1234`
+  - Database: `test`
+ 
+
+
+- Node.js v18+
+- NPM or Yarn
+
 
 ### ▶️ Run the Project
 
