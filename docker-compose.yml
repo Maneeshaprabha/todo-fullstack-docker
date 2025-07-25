@@ -1,0 +1,44 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: ./test  #  backend
+      dockerfile: Dockerfile
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:mysql://mysql:3306/test
+      - SPRING_DATASOURCE_USERNAME=root
+      - SPRING_DATASOURCE_PASSWORD=1234
+    depends_on:
+      - mysql
+    ports:
+      - "8080:8080"
+    networks:
+      - todo-network
+
+  mysql:
+    image: mysql:8
+    environment:
+      MYSQL_ROOT_PASSWORD: 1234
+      MYSQL_DATABASE: test
+    ports:
+      - "3307:3306"  
+    networks:
+      - todo-network
+
+  frontend:
+    build:
+      context: ./todo  # frontend
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    environment:
+      - NEXT_PUBLIC_API_URL=http://localhost:8080/test 
+    depends_on:
+      - backend
+    networks:
+      - todo-network
+
+networks:
+  todo-network:
+    driver: bridge

@@ -1,0 +1,17 @@
+# Global
+node_modules/
+.env
+*.log
+.DS_Store
+
+# Java
+/test/target/
+/test/.idea/
+/test/.classpath
+/test/.project
+/test/.settings/
+
+# Next.js
+/todo/.next/
+/todo/out/
+/todo/.env.local
